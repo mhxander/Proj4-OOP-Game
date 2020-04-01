@@ -12,10 +12,10 @@ class Phrase{
     */
     addPhraseToDisplay(){
         const div = document.getElementById('phrase');
-        for (let i = 0, i < globalThis.phrase.length, i += 1){
+        for (i = 0; i < this.phrase.length; i += 1) {
             const letter = this.phrase.charAt(i);
             const li = document.createElement('li');
-            li.textContent = letter;
+            li.textContent = letter.toUpperCase();
             if (li.textContent === ' '){
                 li.className = 'space';
             } else {
@@ -27,20 +27,14 @@ class Phrase{
     }
 
     // Checks to see if the selected letter is in the phrase.
-    checkletter(letter){
-        const letters = document.getElementsByClassName('letter');
-        for (let i = 0, i < letters.length; i += 1){
-            if (letters[i].innerHTML === letter){
-                return true;
-            }
-            return false;
-        }
+    checkLetter(letter){
+        return this.phrase.includes(letter);
     }
 
 
     //Reveals any matched letters
     showMatchedLetter(letter){
-        if (this.checkedLetter(letter)){
+        if (this.checkLetter(letter)){
             const matchedLetters = document.getElementsByClassName(letter);
             for (let i = 0; i < matchedLetters.length; i += 1){
                 matchedLetters[i].classList.remove('hide');
