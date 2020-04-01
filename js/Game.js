@@ -15,7 +15,7 @@
      * @return {array} Array of possible phrases
      */
     createPhrases() {
-        return[new Phrase('The Phantom Menace'),
+        return[ new Phrase('The Phantom Menace'),
                 new Phrase('Attack of the Clones'),
                 new Phrase('Revenge of the Sith'),
                 new Phrase('A New Hope'),
@@ -63,7 +63,6 @@
         };
         button.disabled = true;
         const buttonLetter = button.innerHTML;
-        console.log('buttonLetter =' + buttonLetter);
         if(this.activePhrase.checkLetter(buttonLetter)){
             this.activePhrase.showMatchedLetter(buttonLetter);
             button.classList.add('chosen');
@@ -124,6 +123,7 @@
             h1.textContent = 'You Lost!!';
             overlay.classList.replace('start', 'lose');
         }
+        document.getElementById('btn__reset').innerHTML = 'New Game';
     };
 
 
