@@ -38,6 +38,8 @@
 
     /**
      * Start game
+     * Removes overlay, and sets up the gameboard.
+     * I didn't like the colors in the original, so I changed them.
      */
     startGame() {
         this.reset();
@@ -55,6 +57,11 @@
 
     /**
      * Controls what happens when letters are chosen
+     * Checks chosen letter using checkLetter.
+     * Shows chosen letters with showMatchedLetter.
+     * Changes the box shadows that I added.
+     * Marks letter as right(chosen) or wrong.
+     * Runs checkForWin if the letter was right.
      * @param {string} Letter chosen 
      */
     handleInteraction(button){
@@ -109,6 +116,8 @@
 
     /**
      * Display game over message
+     * Displays either "You Won!!" or "You Lost!!"
+     * Also changed the button from "Start Game" to "New Game".
      * @param {boolean} gameOver-won or lost
      */
     gameOver(gameWon){
@@ -134,7 +143,9 @@
      */
     reset() {
         this.missed = 0;
+        // Remove previous face
         document.getElementById('phrase').children[0].innerHTML = '';
+        //Changes all those correct and incorrect keys back to normal.
         const keyrows = document.getElementsByClassName('keyrow');
         for (let i=0; i < keyrows.length; i += 1){
             for (let j=0; j < keyrows[i].children.length; j += 1){
@@ -143,6 +154,7 @@
                 keyrows[i].children[j].style.boxShadow = "5px 5px 5px grey";
             }
         }
+        //Changes incorrect hearts back to correct ones.
         const hearts = document.querySelectorAll('#scoreboard img');
         for (let i=0; i < hearts.length; i += 1){
             hearts[i].src='images/liveHeart.png';
